@@ -19,7 +19,13 @@ class EmployersAddForm extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    this.props.onAdd(this.state.name, this.state.salary);
+
+    if (this.state.name.length < 3 || this.state.salary === "") {
+      alert("Проверьте правильность введенных значений");
+      return;
+    } else {
+      this.props.onAdd(this.state.name, this.state.salary);
+    }
     this.setState({
       name: "",
       salary: "",
