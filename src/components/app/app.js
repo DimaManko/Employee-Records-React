@@ -90,12 +90,13 @@ class App extends Component {
   };
 
   filterEmp = (items, filter) => {
-    if (filter === "all") {
-      return items;
-    } else if (filter === "rise") {
-      return items.filter((item) => item.rise);
-    } else if (filter === "moreThan1000") {
-      return items.filter((item) => item.salary > 1000);
+    switch (filter) {
+      case "rise":
+        return items.filter((item) => item.rise);
+      case "moreThan1000":
+        return items.filter((item) => item.salary > 1000);
+      default:
+        return items;
     }
   };
   render() {
